@@ -1,22 +1,5 @@
 #include "class.hpp"
 
-struct Contact
-{
-    std::string f_name;
-    std::string l_name;
-    std::string n_name;
-    std::string phone_number;
-    std::string secret;
-    int nb;
-};
-
-struct Phonebook
-{
-    Contact contacts[8];
-    int contact_nb;
-};
-
-
 void    init_phonebook(Phonebook *phonebook)
 {
     phonebook->contact_nb = 0;
@@ -72,6 +55,43 @@ void    f_add(Phonebook *phonebook)
     phonebook->contact_nb += 1;
 }
 
+
+// SEARCH : affiche le contact demandé
+// ◦ Affiche les contacts enregistrés sous la forme d’une liste de 4 colonnes : index,
+// first name, last name et nickname.
+// ◦ Chaque colonne doit faire 10 caractères de long. Elles doivent être séparées
+// par un pipe (’|’). Leur texte est aligné à droite. Si le texte dépasse la largeur
+// de la colonne, il faut le tronquer et remplacer le dernier caractère affiché par
+// un point (’.’).
+// ◦ Ensuite, le programme demande à l’utilisateur d’entrer l’index du contact à af-
+// ficher. Si l’index ou son format sont incorrects, gérez cela de manière pertinente.
+// Sinon, affichez les informations du contact, une par ligne.
+
+void    f_search(Phonebook *phonebook)
+{
+    const char    tab[4][10];
+
+    int i = 0;
+    int index = 0;
+    std::cout << "Enter the index of the contact you want to display : " << std::endl;
+    std::cin >> index;
+    while (i < 8)
+    {
+        if (phonebook->contacts[i].nb == index)
+            break ;
+        i++;
+    }
+    tab[0] = phonebook->contacts[i].nb;
+    tab[1] = phonebook->contacts[i].f_name;
+    tab[2] = phonebook->contacts[i].l_name;
+    tab[3] = phonebook->contacts[i].n_name;
+    std::string str(tab[0]);
+    std::string str(tab[1]);
+    std::string str(tab[2]);
+    std::string str(tab[3]);
+    std::cout << tab[0] << " | " << tab[1] << " | " << tab[2] << " | " << tab[3] << std::endl;
+}
+
 int main()
 {
     Phonebook phonebook;
@@ -80,12 +100,12 @@ int main()
     init_phonebook(&phonebook);
     while (1)
     {
-        std::cout << "Enter a command" << std::endl;
+        std::cout << "Enter one of the following commands : ADD | SEARCH | EXIT" << std::endl;
         std::cin >> arg;
         if (arg.compare("ADD") == 0)
             f_add(&phonebook);
         else if (arg.compare("SEARCH") == 0)
-            return (std::cout << "to do\n", 0);
+            f_search(&phonebook);
         else if (arg.compare("EXIT") == 0)
             break ;
         std::cout << "Contact number : " << phonebook.contact_nb << std::endl;
