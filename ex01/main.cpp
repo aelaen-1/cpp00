@@ -1,44 +1,11 @@
-#include "class.hpp"
+#include "phonebook.class.hpp"
+#include "phonebook.class.hpp"
 
-void    init_phonebook(Phonebook *phonebook)
+static void    init_phonebook(Phonebook *phonebook)
 {
     phonebook->contact_nb = 0;
     for (int i = 0; i < 8; i++)
-    {
-        phonebook->contacts[i].f_name = "";
-        phonebook->contacts[i].l_name = "";
-        phonebook->contacts[i].n_name = "";
-        phonebook->contacts[i].phone_number = "";
-        phonebook->contacts[i].secret = "";
         phonebook->contacts[i].nb = 0;
-    }
-}
-
-void    fill_info(Phonebook *phonebook, int index)
-{
-    std::cout << "First name : ";
-    std::cin >> phonebook->contacts[index].f_name;
-    std::cout << "Last name : ";
-    std::cin >> phonebook->contacts[index].l_name;
-    std::cout << "Nickname : ";
-    std::cin >> phonebook->contacts[index].n_name;
-    std::cout << "Phone number : ";
-    std::cin >> phonebook->contacts[index].phone_number;
-    std::cout << "Darkest secret : ";
-    std::cin >> phonebook->contacts[index].secret;
-    phonebook->contacts[index].nb = phonebook->contact_nb + 1;
-}
-
-int find_oldest_contact(Phonebook *phonebook)
-{
-    int lowest_index = INT_MAX;
-
-    for (int i = 0; i < 8; i++)
-    {
-        if (phonebook->contacts[i].nb < lowest_index)
-            lowest_index = phonebook->contacts[i].nb;
-    }
-    return (lowest_index);
 }
 
 void    f_add(Phonebook *phonebook)
@@ -54,40 +21,53 @@ void    f_add(Phonebook *phonebook)
         fill_info(phonebook, phonebook->contact_nb);
     phonebook->contact_nb += 1;
 }
+static std::string format_string(std::string str)
+{
+    if (str.length() > 10)
+    {
+        str = str.substr(0, 9);
+        str += ".";
+    }
+    return (str);
+}
 
-
-// SEARCH : affiche le contact demandé
-// ◦ Affiche les contacts enregistrés sous la forme d’une liste de 4 colonnes : index,
-// first name, last name et nickname.
-// ◦ Chaque colonne doit faire 10 caractères de long. Elles doivent être séparées
-// par un pipe (’|’). Leur texte est aligné à droite. Si le texte dépasse la largeur
-// de la colonne, il faut le tronquer et remplacer le dernier caractère affiché par
-// un point (’.’).
-// ◦ Ensuite, le programme demande à l’utilisateur d’entrer l’index du contact à af-
-// ficher. Si l’index ou son format sont incorrects, gérez cela de manière pertinente.
-// Sinon, affichez les informations du contact, une par ligne.
-
+// setw : set field width
 void    f_search(Phonebook *phonebook)
 {
     int i = 0;
     int index = 0;
     std::cout << "Enter the index of the contact you want to display : " << std::endl;
     std::cin >> index;
+    if (index < 1 || index > phonebook->contact_nb)
+    {
+        std::cout << "Invalid index" << std::endl;
+        return ;
+    }
+    std::cout << std::setw(10) << "Index" << " | " 
+    << std::setw(10) << "First name" << " | "
+    << std::setw(10) << "Last name" << " | " 
+    << std::setw(10) << "Nickname" << std::endl;
     while (i < 8)
     {
         if (phonebook->contacts[i].nb == index)
             break ;
         i++;
     }
-    std::cout << phonebook->contacts[i].nb << " | " << phonebook->contacts[i].f_name << " | " << phonebook->contacts[i].l_name << " | " << phonebook->contacts[i].n_name << std::endl;
+    std::cout << std::setw(10) << phonebook->contacts[i].nb << " | " 
+    << std::setw(10) << format_string(phonebook->contacts[i].f_name) << " | "
+    << std::setw(10) << format_string(phonebook->contacts[i].l_name) << " | " 
+    << std::setw(10) << format_string(phonebook->contacts[i].n_name) << std::endl;
 }
 
 int main()
 {
     Phonebook phonebook;
+    // takes user input
     std::string arg;
-
+    
+    // set contact_nb and indexes to 0
     init_phonebook(&phonebook);
+    // loop until user enters EXIT
     while (1)
     {
         std::cout << "Enter one of the following commands : ADD | SEARCH | EXIT" << std::endl;
@@ -98,7 +78,6 @@ int main()
             f_search(&phonebook);
         else if (arg.compare("EXIT") == 0)
             break ;
-        std::cout << "Contact number : " << phonebook.contact_nb << std::endl;
     }
     return (0); 
 }
