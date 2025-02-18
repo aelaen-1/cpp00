@@ -69,8 +69,6 @@ void    f_add(Phonebook *phonebook)
 
 void    f_search(Phonebook *phonebook)
 {
-    const char    tab[4][10];
-
     int i = 0;
     int index = 0;
     std::cout << "Enter the index of the contact you want to display : " << std::endl;
@@ -81,15 +79,7 @@ void    f_search(Phonebook *phonebook)
             break ;
         i++;
     }
-    tab[0] = phonebook->contacts[i].nb;
-    tab[1] = phonebook->contacts[i].f_name;
-    tab[2] = phonebook->contacts[i].l_name;
-    tab[3] = phonebook->contacts[i].n_name;
-    std::string str(tab[0]);
-    std::string str(tab[1]);
-    std::string str(tab[2]);
-    std::string str(tab[3]);
-    std::cout << tab[0] << " | " << tab[1] << " | " << tab[2] << " | " << tab[3] << std::endl;
+    std::cout << phonebook->contacts[i].nb << " | " << phonebook->contacts[i].f_name << " | " << phonebook->contacts[i].l_name << " | " << phonebook->contacts[i].n_name << std::endl;
 }
 
 int main()
