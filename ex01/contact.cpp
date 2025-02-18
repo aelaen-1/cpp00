@@ -1,5 +1,4 @@
-#include "contact.class.hpp"
-#include "phonebook.class.hpp"
+#include "include/Phonebook.hpp"
 
 void    fill_info(Phonebook *phonebook, int index)
 {

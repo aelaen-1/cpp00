@@ -1,7 +1,7 @@
 #ifndef PHONEBOOK_CLASS_HPP
  #define PHONEBOOK_CLASS_HPP
 
-#include "contact.class.hpp"
+#include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
 #include <climits>

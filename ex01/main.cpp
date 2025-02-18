@@ -1,5 +1,4 @@
-#include "phonebook.class.hpp"
-#include "phonebook.class.hpp"
+#include "include/Phonebook.hpp"
 
 static void    init_phonebook(Phonebook *phonebook)
 {
