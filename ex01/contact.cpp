@@ -18,7 +18,7 @@ void    fill_info(Phonebook *phonebook, int index)
 int find_oldest_contact(Phonebook *phonebook)
 {
     int lowest_index = INT_MAX;
-
+    
     for (int i = 0; i < 8; i++)
     {
         

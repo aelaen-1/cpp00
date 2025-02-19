@@ -14,12 +14,12 @@ void    f_add(Phonebook *phonebook)
     {
         int lowest_index_in_phonebook = find_oldest_contact(phonebook);
         fill_info(phonebook, lowest_index_in_phonebook);
-        return ;
     }
     else
         fill_info(phonebook, phonebook->contact_nb);
     phonebook->contact_nb += 1;
 }
+
 static std::string format_string(std::string str)
 {
     if (str.length() > 10)
