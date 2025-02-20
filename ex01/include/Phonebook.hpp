@@ -9,9 +9,10 @@
 class Phonebook
 {
 public:
-    // Phonebook();
-    // ~Phonebook();
+    Phonebook();
+    ~Phonebook();
     Contact contacts[8];
+    int     contact_nb;
     void    add_contact();
     void    search_contact();
 };

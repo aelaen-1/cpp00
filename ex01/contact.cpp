@@ -7,10 +7,10 @@ Contact::Contact()
 
 Contact::~Contact()
 {
-    
+
 }
 
-void    Contact::data_setter(int i)
+void    Contact::set_data(int i)
 {
     this->index = i + 1;
     std::cout << "Fill contact information" << std::endl;
@@ -24,6 +24,14 @@ void    Contact::data_setter(int i)
     std::cin >> this->phone_number;
     std::cout << "Darkest secret : ";
     std::cin >> this->secret;
+}
+
+void    Contact::print_data()
+{
+    std::cout << std::setw(10) << this->get_index() << " | "
+    << std::setw(10) << this->get_fname() << " | "
+    << std::setw(10) << this->get_lname() << " | "
+    << std::setw(10) << this->get_nname() << " | " << std::endl;
 }
 
 int Contact::get_index()

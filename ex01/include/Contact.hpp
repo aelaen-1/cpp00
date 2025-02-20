@@ -16,7 +16,8 @@ private:
 public:
     Contact();
     ~Contact();
-    void    data_setter(int i);
+    void    set_data(int i);
+    void    print_data();
     int     get_index();
     std::string get_fname();
     std::string get_lname();
