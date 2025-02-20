@@ -14,6 +14,7 @@ public:
     Contact contacts[8];
     int     contact_nb;
     void    add_contact();
+    int     is_contact(int index);
     void    search_contact();
 };
 

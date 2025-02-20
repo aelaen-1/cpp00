@@ -22,7 +22,6 @@ public:
     std::string get_fname();
     std::string get_lname();
     std::string get_nname();
-    // std::string format_string(std::string);
 };
 
 #endif

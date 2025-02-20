@@ -8,15 +8,13 @@ int main ()
     while (1)
     {
         std::cout << "Run one of the following command : ADD | SEARCH | EXIT" << std::endl;
-        // std::cin >> arg;
-        getline(std::cin, arg);
+        std::getline(std::cin, arg);
         if (arg.compare("ADD") == 0)
             phonebook.add_contact();
         else if (arg.compare("SEARCH") == 0)
             phonebook.search_contact();
         else if (arg.compare("EXIT") == 0)
             break ;
-        std::cin.ignore();
     }
     return (0); 
 }

@@ -2,7 +2,7 @@
 
 Contact::Contact()
 {
-    this->index = 0; // Pourquoi pas .  au lieu de ->  ? 
+    this->index = 0;
 }
 
 Contact::~Contact()
@@ -13,7 +13,10 @@ Contact::~Contact()
 void    Contact::set_data(int i)
 {
     this->index = i + 1;
-    std::cout << "Fill contact information" << std::endl;
+    std::cout << std::setw(50) << "---------------------------------------" <<  std::endl;
+    std::cout << std::setw(42) << "Fill contact information" << std::endl;
+    std::cout << std::setw(50) << "---------------------------------------" <<  std::endl;
+
     std::cout << "First name : ";
     std::cin >> this->f_name;
     std::cout << "Last name : ";
@@ -24,6 +27,7 @@ void    Contact::set_data(int i)
     std::cin >> this->phone_number;
     std::cout << "Darkest secret : ";
     std::cin >> this->secret;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 void    Contact::print_data()
@@ -38,13 +42,6 @@ int Contact::get_index()
 {
     return(this->index);
 }
-
-// std::string Contact::format_string(std::string s)
-// {
-//     if (s.size() > 10)
-//         s = s.substr(0, 9) + ".";
-//     return (s);
-// }
 
 std::string Contact::get_fname()
 {
