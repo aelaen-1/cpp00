@@ -3,6 +3,7 @@ CC = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp \
+	phonebook.cpp \
 	contact.cpp
 OBJ = ${SRC:.cpp=.o}
 

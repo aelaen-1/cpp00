@@ -6,15 +6,14 @@
 #include <iomanip>
 #include <climits>
 
-
 class Phonebook
 {
 public:
+    // Phonebook();
+    // ~Phonebook();
     Contact contacts[8];
-    int contact_nb;
+    void    add_contact();
+    void    search_contact();
 };
-
-int     find_oldest_contact(Phonebook *phonebook);
-void    fill_info(Phonebook *phonebook, int index);
 
 #endif
