@@ -3,8 +3,8 @@ CC = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp \
-	phonebook.cpp \
-	contact.cpp
+	PhoneBook.cpp \
+	Contact.cpp
 OBJ = ${SRC:.cpp=.o}
 
 all: $(NAME)

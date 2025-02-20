@@ -1,4 +1,4 @@
-#include "include/Phonebook.hpp"
+#include "include/PhoneBook.hpp"
 
 Contact::Contact()
 {
@@ -17,15 +17,15 @@ void    Contact::set_data(int i)
     std::cout << std::setw(42) << "Fill contact information" << std::endl;
     std::cout << std::setw(50) << "---------------------------------------" <<  std::endl;
 
-    std::cout << "First name : ";
+    std::cout << "First name :\n";
     std::cin >> this->f_name;
-    std::cout << "Last name : ";
+    std::cout << "Last name :\n";
     std::cin >> this->l_name;
-    std::cout << "Nickname : ";
+    std::cout << "Nickname :\n";
     std::cin >> this->n_name;
-    std::cout << "Phone number : ";
+    std::cout << "Phone number :\n";
     std::cin >> this->phone_number;
-    std::cout << "Darkest secret : ";
+    std::cout << "Darkest secret :\n";
     std::cin >> this->secret;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }

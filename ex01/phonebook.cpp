@@ -1,16 +1,16 @@
-#include "include/Phonebook.hpp"
+#include "include/PhoneBook.hpp"
 
-Phonebook::Phonebook()
+PhoneBook::PhoneBook()
 {
     contact_nb = 0;
 }
 
-Phonebook::~Phonebook()
+PhoneBook::~PhoneBook()
 {
 
 }
 
-void    Phonebook::add_contact()
+void    PhoneBook::add_contact()
 {
     static  int i = 0;
 
@@ -19,7 +19,7 @@ void    Phonebook::add_contact()
     this->contact_nb += 1;
 };
 
-int Phonebook::is_contact(int index)
+int PhoneBook::is_contact(int index)
 {
     int i = 0;
     while (i < this->contact_nb && i < 8)
@@ -31,7 +31,7 @@ int Phonebook::is_contact(int index)
     return (0);
 }
 
-void    Phonebook::search_contact()
+void    PhoneBook::search_contact()
 {
     int indx = 0;
     std::cout << std::setw(52) << "--------------------------------------------------" << std::endl;
@@ -42,7 +42,7 @@ void    Phonebook::search_contact()
     std::cout << std::setw(52) << "--------------------------------------------------" << std::endl;
     for (int i =0; i < this->contact_nb; i++)
         this->contacts[i].print_data();
-    std::cout << "Enter the index of the contact you want to display : ";
+    std::cout << "Enter the index of the contact you want to display :\n";
     std::cin >> indx;
     if (std::cin.fail())
     {

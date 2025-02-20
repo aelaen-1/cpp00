@@ -1,16 +1,16 @@
-#ifndef PHONEBOOK_CLASS_HPP
- #define PHONEBOOK_CLASS_HPP
+#ifndef PHONEBOOK_HPP
+ #define PHONEBOOK_HPP
 
 #include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
 #include <climits>
 
-class Phonebook
+class PhoneBook
 {
 public:
-    Phonebook();
-    ~Phonebook();
+    PhoneBook();
+    ~PhoneBook();
     Contact contacts[8];
     int     contact_nb;
     void    add_contact();
