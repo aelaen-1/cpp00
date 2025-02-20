@@ -8,7 +8,9 @@ int main ()
     while (1)
     {
         std::cout << "Run one of the following command : ADD | SEARCH | EXIT" << std::endl;
-        std::cin >> arg;
+        // std::cin >> arg;
+        getline(std::cin, arg);
+        std::cout << arg << std::endl;
         if (arg.compare("ADD") == 0)
             phonebook.add_contact();
         else if (arg.compare("SEARCH") == 0)
@@ -16,5 +18,5 @@ int main ()
         else if (arg.compare("EXIT") == 0)
             break ;
     }
-    return (0);
+    return (0); 
 }
