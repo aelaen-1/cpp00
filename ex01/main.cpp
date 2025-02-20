@@ -64,8 +64,6 @@ int main()
     // takes user input
     std::string arg;
     
-    // set contact_nb and indexes to 0
-    init_phonebook(&phonebook);
     // loop until user enters EXIT
     while (1)
     {
