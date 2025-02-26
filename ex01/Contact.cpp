@@ -38,32 +38,35 @@ void    Contact::setSecret(std::string s)
 
 void     Contact::setIndex(int i)
 {
-    this->_index = i;
+    this->_index = i + 1;
 }
 
 //getters 
 
-std::string Contact::getFirstN()
-{
-    return (this->_firstN);
-}
 
-std::string Contact::getLastN()
-{
-    return (this->_lastN);
-}
-
-std::string Contact::getNickN()
-{
-    return (this->_nickN);
-}
-
-std::string Contact::getPhoneNumber()
-{
-    return (this->_phoneNumber);
-}
 
 int     Contact::getIndex()
 {
     return (this->_index);
+}
+
+std::string Contact::formatFirstN()
+{
+    std::string toFormat = this->getFirstN();
+
+    return(toFormat.substr(0, 9) + ".");
+}
+
+std::string Contact::formatLastN()
+{
+    std::string toFormat = this->getLastN();
+
+    return(toFormat.substr(0, 9) + ".");
+}
+
+std::string Contact::formatNickN()
+{
+    std::string toFormat = this->getNickN();
+
+    return(toFormat.substr(0, 9) + ".");
 }

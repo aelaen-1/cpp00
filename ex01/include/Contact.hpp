@@ -30,6 +30,10 @@ public:
     std::string getNickN();
     std::string getPhoneNumber();
     int     getIndex();
+
+    std::string formatFirstN();
+    std::string formatLastN();
+    std::string formatNickN();
 };
 
 #endif

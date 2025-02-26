@@ -2,15 +2,15 @@
 
 void    selectCommandPrompt()
 {
-    std::cout << "---------------------------------------------------------" << std::endl;
-    std::cout << "Issue one of the following commands : ADD | SEARCH | EXIT" << std::endl;
-    std::cout << "---------------------------------------------------------" << std::endl;
+    std::cout << "Run one of the following commands : ADD | SEARCH | EXIT" << std::endl;
+    std::cout << "_______________________________________________________" << std::endl;
+    std::cout << std::endl;
     std::cout << "==> ";
 }
 
 int main()
 {
-    Phonebook phonebook;
+    PhoneBook phonebook;
     std::string input;
 
     while (1)

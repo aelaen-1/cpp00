@@ -7,18 +7,16 @@
 #include "Contact.hpp"
 
 
-struct Phonebook
+struct PhoneBook
 {
 private:
     int _contactNb;
-
 public:
-    Phonebook();
-    ~Phonebook();
+    PhoneBook();
+    ~PhoneBook();
 
     Contact contacts[8];
 
-    int     getContactnb();
     void    addContact();
     void    searchContact();
 };

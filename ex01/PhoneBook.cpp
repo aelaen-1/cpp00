@@ -1,52 +1,94 @@
 #include "include/PhoneBook.hpp"
 
-Phonebook::Phonebook()
+PhoneBook::PhoneBook()
 : _contactNb(0)
 {
 }
 
-Phonebook::~Phonebook()
+PhoneBook::~PhoneBook()
 {
     std::cout << "A PhoneBook has been destroyed" << std::endl;
 }
- 
-int Phonebook::getContactnb()
-{
-    return (this->_contactNb);
-}
 
-void    Phonebook::addContact()
+void    PhoneBook::addContact()
 {
-    static int  i = 0;
-
+    static int i = 0;
+    std::string str_input;
     this->contacts[i % 8].setIndex(i % 8);
-    std::cout << std::setw(40) << "-------------------------------------" << std::endl;
-    std::cout << std::setw(30) << "FILL CONTACT INFO" << std::endl;
-    std::cout << std::setw(40) << "-------------------------------------" << std::endl;
-    std::cout << "First name: " << std::endl;
-    std::cin >> this->con
-    this->contacts[i % 8].setFirstN(input);
 
-    std::cout << "Last name: " << std::endl;
-    std::getline(std::cin, input);
-    this->contacts[i % 8].setLastN(input);
+    std::cout << std::setw(50) << "---------------------------------------" <<  std::endl;
+    std::cout << std::setw(42) << "Fill contact information" << std::endl;
+    std::cout << std::setw(50) << "---------------------------------------\n" <<  std::endl;
 
-    std::cout << "Nick name: " << std::endl;
-    std::getline(std::cin, input);
-    this->contacts[i % 8].setNickN(input);
+    std::cout << "First name :\n";
+    std::cin >> str_input;
+    this->contacts[i % 8].setFirstN(str_input);
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    std::cout << "Phone number: " << std::endl;
-    std::getline(std::cin, input);
-    this->contacts[i % 8].setNickN(input);
- 
-    std::cout << "Darkest secret...: " << std::endl;
-    std::getline(std::cin, input);
-    this->contacts[i % 8].setNickN(input);
+    std::cout << "Last name :\n";
+    std::cin >> str_input;
+    this->contacts[i % 8].setLastN(str_input);
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Nickname :\n";
+    std::cin >> str_input;
+    this->contacts[i % 8].setNickN(str_input);
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::cout << "Phone number :\n";
+    std::cin >> str_input;
+    this->contacts[i % 8].setPhoneNumber(str_input);
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::cout << "Darkest secret :\n";
+    std::cin >> str_input;
+    this->contacts[i % 8].setSecret(str_input);
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    i++;
+    this->_contactNb++;
 }
 
-void    Phonebook::searchContact()
+void    PhoneBook::searchContact()
 {
+    int indx = 0;
+    std::cout << std::setw(52) << "--------------------------------------------------" << std::endl;
+    std::cout << std::setw(10) << "Index" << " | " 
+    << std::setw(10) << "First name" << " | "
+    << std::setw(10) << "Last name" << " | " 
+    << std::setw(10) << "Nickname" << std::endl;
+    std::cout << std::setw(52) << "--------------------------------------------------" << std::endl;
+    std::cout << std::endl;
+
+    // print all contacts
+    for (int i = 0; i < this->_contactNb; i++)
+    {
+        std::cout << this->contacts[i].getIndex() << " | "
+        << this->contacts[i].formatFirstN() << " | " <<
+        this->contacts[i].formatLastN() << " | " <<
+        this->contacts[i].formatNickN() << std::endl;
+        std::cout << std::endl;
+    }
+    std::cout << "Enter the index of the contact you want to display:\n";
+    std::cin >> indx;
+    if (std::cin.fail())
+    {
+        std::cin.clear(); // clear error flags that will prevent any input from succeeding if not cleared
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cerr << "Invalid input. Indexes go from 1 to 8" << std::endl;
+        return ;
+    }
+    if (indx < 1 || indx > 8)
+    {
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cerr << "Invalid input. Indexes go from 1 to 8" << std::endl;
+        return ;
+    }
+    std::cout << this->contacts[indx-1].getIndex() << " | "
+    << this->contacts[indx-1].formatFirstN() << " | " <<
+    this->contacts[indx-1].formatLastN() << " | " <<
+    this->contacts[indx-1].formatNickN() << std::endl;
+    std::cout << std::endl;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 }
