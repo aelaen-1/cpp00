@@ -9,31 +9,92 @@ Contact::~Contact()
 {
 }
 
+// validate input, returns the input once it's correct
+std::string    Contact::validateInputString()
+{
+    std::string name;
+
+    std::getline(std::cin, name);
+    while (std::cin.fail() || std::cin.eof() || name.length() == 0)
+    {
+        std::cout << "You must enter a non-empty string. Try again:\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::getline(std::cin, name);
+    }
+    return (name);
+}
+
+
+std::string   Contact::validateInputNumber()
+{
+    std::string nb;
+
+    std::getline(std::cin, nb);
+    while (std::cin.fail() || std::cin.eof())
+    {
+        std::cout << "Invalid input. Try again:\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> nb;
+    }
+    unsigned long i = 0;
+    while (i < nb.size())
+    {   
+        if (std::isdigit(nb[i]) == 0)
+        {
+            std::cout << "Input must only contain digital characters. Try again:\n";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            i = 0;
+        }
+        std::getline(std::cin, nb);
+        while (std::cin.fail() || std::cin.eof())
+        {
+            std::cout << "Invalid input. Try again:\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin >> nb;
+        }
+    }
+    return (nb);
+}
+
 //setters 
 
-void Contact::setFirstN(std::string first)
+void    Contact::setFirstN()
 {
-    this->_firstN = first;
+    std::cout<< "First name:\n";
+    std::string name = validateInputString();
+    this->_firstN = name;
 }
 
-void Contact::setLastN(std::string last)
+void    Contact::setLastN()
 {
-    this->_lastN = last;
+    std::cout<< "Last name:\n";
+    std::string name = validateInputString();
+    this->_lastN = name;
 }
 
-void Contact::setNickN(std::string nick)
+void Contact::setNickN()
 {
-    this->_nickN = nick;
+    std::cout<< "Nick name:\n";
+    std::string name = validateInputString();
+    this->_nickN = name;
 }
 
-void Contact::setPhoneNumber(std::string n)
+void Contact::setPhoneNumber()
 {
-    this->_phoneNumber = n;
+    std::cout<< "Phone number:\n";
+    std::string nb = validateInputNumber();
+    this->_phoneNumber = nb;
+    
 }
 
-void    Contact::setSecret(std::string s)
+void    Contact::setSecret()
 {
-    this->_secret = s;
+    std::cout<< "Darkest secret...:\n";
+    std::string secret = validateInputString();
+    this->_secret = secret;
 }
 
 void     Contact::setIndex(int i)
@@ -43,11 +104,24 @@ void     Contact::setIndex(int i)
 
 //getters 
 
-
-
 int     Contact::getIndex()
 {
     return (this->_index);
+}
+
+std::string Contact::getFirstN()
+{
+    return (this->_firstN);
+}
+
+std::string Contact::getLastN()
+{
+    return (this->_lastN);
+}
+
+std::string Contact::getNickN()
+{
+    return (this->_nickN);
 }
 
 std::string Contact::formatFirstN()

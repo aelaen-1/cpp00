@@ -13,37 +13,18 @@ PhoneBook::~PhoneBook()
 void    PhoneBook::addContact()
 {
     static int i = 0;
-    std::string str_input;
     this->contacts[i % 8].setIndex(i % 8);
 
     std::cout << std::setw(50) << "---------------------------------------" <<  std::endl;
     std::cout << std::setw(42) << "Fill contact information" << std::endl;
     std::cout << std::setw(50) << "---------------------------------------\n" <<  std::endl;
 
-    std::cout << "First name :\n";
-    std::cin >> str_input;
-    this->contacts[i % 8].setFirstN(str_input);
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    std::cout << "Last name :\n";
-    std::cin >> str_input;
-    this->contacts[i % 8].setLastN(str_input);
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    std::cout << "Nickname :\n";
-    std::cin >> str_input;
-    this->contacts[i % 8].setNickN(str_input);
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    std::cout << "Phone number :\n";
-    std::cin >> str_input;
-    this->contacts[i % 8].setPhoneNumber(str_input);
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    std::cout << "Darkest secret :\n";
-    std::cin >> str_input;
-    this->contacts[i % 8].setSecret(str_input);
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    this->contacts[i % 8].setFirstN();
+    this->contacts[i % 8].setLastN();
+    this->contacts[i % 8].setNickN();
+    this->contacts[i % 8].setPhoneNumber();
+    this->contacts[i % 8].setSecret();
+    // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     i++;
     this->_contactNb++;

@@ -18,11 +18,13 @@ public:
     Contact();
     ~Contact();
 
-    void    setFirstN(std::string first);
-    void    setLastN(std::string last);
-    void    setNickN(std::string nick);
-    void    setPhoneNumber(std::string  n);
-    void    setSecret(std::string s);
+    std::string     validateInputString();
+    std::string     validateInputNumber();
+    void    setFirstN();
+    void    setLastN();
+    void    setNickN();
+    void    setPhoneNumber();
+    void    setSecret();
     void    setIndex(int i);
 
     std::string getFirstN();
