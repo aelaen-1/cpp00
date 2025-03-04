@@ -5,21 +5,14 @@
 #include <string>
 #include <iomanip>
 
-struct Contact
+class Contact
 {
-private:
-    std::string _firstN;
-    std::string _lastN;
-    std::string _nickN;
-    std::string _phoneNumber;
-    std::string _secret;
-    int _index;
 public:
     Contact();
     ~Contact();
 
-    std::string     askInputString();
-    std::string     validatePhoneNumber();
+    static std::string     askInputString();
+    static bool             isPhoneNumber(std::string input);
     void    askForFirstN();
     void    askForLastN();
     void    askForNickN();
@@ -32,7 +25,14 @@ public:
     std::string getNickN();
     int     getIndex();
 
-    std::string formatColumn(std::string toFormat);
+private:
+    std::string _firstN;
+    std::string _lastN;
+    std::string _nickN;
+    std::string _phoneNumber;
+    std::string _secret;
+    int         _index;
+
 };
 
 #endif

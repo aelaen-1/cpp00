@@ -7,18 +7,21 @@
 #include "Contact.hpp"
 
 
-struct PhoneBook
+class PhoneBook
 {
-private:
-    int _contactNb;
 public:
     PhoneBook();
     ~PhoneBook();
 
-    Contact contacts[8];
+    Contact     contacts[8];
 
-    void    addContact();
-    void    searchContact();
+    void        addContact();
+    void        searchContact();
+    std::string formatColumn(std::string toFormat);
+
+private:
+    int _contactNb;
+    int _nextIndex;
 };
 
 #endif

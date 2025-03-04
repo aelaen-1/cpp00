@@ -1,7 +1,7 @@
 #include "include/Contact.hpp"
 
 Contact::Contact()
-: _firstN(""), _lastN(""), _nickN(""), _phoneNumber(""), _secret(""), _index(0)
+: _index(0)
 {
 }
 
@@ -9,56 +9,32 @@ Contact::~Contact()
 {
 }
 
-// validate input, returns the input once it's correct
+bool   Contact::isPhoneNumber(std::string input)
+{
+    unsigned long i = 0;
+    while (i < input.size())
+    {   
+        if (std::isdigit(input[i]) == 0)
+            return (false);
+        i++;
+    }
+    return (1);
+}
+
+// askFor functions
 std::string    Contact::askInputString()
 {
     std::string name;
 
     std::getline(std::cin, name);
-    while (std::cin.fail()|| !name.length()) // cin.eof() = ctrlD
+    while (std::cin.fail()|| !name.length()) // cin.eof() for ctrlD
     {
         std::cout << "You must enter a non-empty string. Try again:\n";
         std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::getline(std::cin, name);
     }
     return (name);
 }
-
-std::string   Contact::validatePhoneNumber()
-{
-    std::string nb;
-
-    std::getline(std::cin, nb);
-    while (std::cin.fail() || !nb.length())
-    {
-        std::cout << "Invalid input. Try again:\n";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cin >> nb;
-    }
-    unsigned long i = 0;
-    while (i < nb.size())
-    {   
-        if (std::isdigit(nb[i]) == 0)
-        {
-            std::cout << "Input must only contain digital characters. Try again:\n";
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            i = 0;
-        }
-        std::getline(std::cin, nb);
-        while (std::cin.fail())
-        {
-            std::cout << "Invalid input. Try again:\n";
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cin >> nb;
-        }
-    }
-    return (nb);
-}
-
-//setters 
 
 void    Contact::askForFirstN()
 {
@@ -81,7 +57,12 @@ void Contact::askForNickN()
 void Contact::askForPhoneNumber()
 {
     std::cout<< "Phone number:\n";
-    this->_phoneNumber = validatePhoneNumber();
+    this->_phoneNumber = askInputString();
+    while (!this->isPhoneNumber(this->_phoneNumber))
+    {
+        std::cout << "Please type a valid phone number: \n";
+        this->_phoneNumber = askInputString();
+    }
 }
 
 void    Contact::askForSecret()
@@ -90,13 +71,13 @@ void    Contact::askForSecret()
     this->_secret = askInputString();
 }
 
+// setters
 void     Contact::setIndex(int i)
 {
-    this->_index = i + 1;
+    this->_index = i;
 }
 
 //getters 
-
 int     Contact::getIndex()
 {
     return (this->_index);
@@ -117,9 +98,3 @@ std::string Contact::getNickN()
     return (this->_nickN);
 }
 
-std::string Contact::formatColumn(std::string toFormat)
-{
-    if (toFormat.length() > 10)
-        return (toFormat.substr(0, 9) + ".");
-    return (toFormat);
-}
