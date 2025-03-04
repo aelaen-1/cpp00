@@ -18,24 +18,21 @@ public:
     Contact();
     ~Contact();
 
-    std::string     validateInputString();
-    std::string     validateInputNumber();
-    void    setFirstN();
-    void    setLastN();
-    void    setNickN();
-    void    setPhoneNumber();
-    void    setSecret();
+    std::string     askInputString();
+    std::string     validatePhoneNumber();
+    void    askForFirstN();
+    void    askForLastN();
+    void    askForNickN();
+    void    askForPhoneNumber();
+    void    askForSecret();
     void    setIndex(int i);
 
     std::string getFirstN();
     std::string getLastN();
     std::string getNickN();
-    std::string getPhoneNumber();
     int     getIndex();
 
-    std::string formatFirstN();
-    std::string formatLastN();
-    std::string formatNickN();
+    std::string formatColumn(std::string toFormat);
 };
 
 #endif

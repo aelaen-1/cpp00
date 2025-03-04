@@ -10,12 +10,12 @@ Contact::~Contact()
 }
 
 // validate input, returns the input once it's correct
-std::string    Contact::validateInputString()
+std::string    Contact::askInputString()
 {
     std::string name;
 
     std::getline(std::cin, name);
-    while (std::cin.fail() || std::cin.eof() || name.length() == 0)
+    while (std::cin.fail()|| !name.length()) // cin.eof() = ctrlD
     {
         std::cout << "You must enter a non-empty string. Try again:\n";
         std::cin.clear();
@@ -25,13 +25,12 @@ std::string    Contact::validateInputString()
     return (name);
 }
 
-
-std::string   Contact::validateInputNumber()
+std::string   Contact::validatePhoneNumber()
 {
     std::string nb;
 
     std::getline(std::cin, nb);
-    while (std::cin.fail() || std::cin.eof())
+    while (std::cin.fail() || !nb.length())
     {
         std::cout << "Invalid input. Try again:\n";
         std::cin.clear();
@@ -48,7 +47,7 @@ std::string   Contact::validateInputNumber()
             i = 0;
         }
         std::getline(std::cin, nb);
-        while (std::cin.fail() || std::cin.eof())
+        while (std::cin.fail())
         {
             std::cout << "Invalid input. Try again:\n";
             std::cin.clear();
@@ -61,40 +60,34 @@ std::string   Contact::validateInputNumber()
 
 //setters 
 
-void    Contact::setFirstN()
+void    Contact::askForFirstN()
 {
     std::cout<< "First name:\n";
-    std::string name = validateInputString();
-    this->_firstN = name;
+    this->_firstN = askInputString();
 }
 
-void    Contact::setLastN()
+void    Contact::askForLastN()
 {
     std::cout<< "Last name:\n";
-    std::string name = validateInputString();
-    this->_lastN = name;
+    this->_lastN = askInputString();
 }
 
-void Contact::setNickN()
+void Contact::askForNickN()
 {
     std::cout<< "Nick name:\n";
-    std::string name = validateInputString();
-    this->_nickN = name;
+    this->_nickN = askInputString();
 }
 
-void Contact::setPhoneNumber()
+void Contact::askForPhoneNumber()
 {
     std::cout<< "Phone number:\n";
-    std::string nb = validateInputNumber();
-    this->_phoneNumber = nb;
-    
+    this->_phoneNumber = validatePhoneNumber();
 }
 
-void    Contact::setSecret()
+void    Contact::askForSecret()
 {
     std::cout<< "Darkest secret...:\n";
-    std::string secret = validateInputString();
-    this->_secret = secret;
+    this->_secret = askInputString();
 }
 
 void     Contact::setIndex(int i)
@@ -124,23 +117,9 @@ std::string Contact::getNickN()
     return (this->_nickN);
 }
 
-std::string Contact::formatFirstN()
+std::string Contact::formatColumn(std::string toFormat)
 {
-    std::string toFormat = this->getFirstN();
-
-    return(toFormat.substr(0, 9) + ".");
-}
-
-std::string Contact::formatLastN()
-{
-    std::string toFormat = this->getLastN();
-
-    return(toFormat.substr(0, 9) + ".");
-}
-
-std::string Contact::formatNickN()
-{
-    std::string toFormat = this->getNickN();
-
-    return(toFormat.substr(0, 9) + ".");
+    if (toFormat.length() > 10)
+        return (toFormat.substr(0, 9) + ".");
+    return (toFormat);
 }

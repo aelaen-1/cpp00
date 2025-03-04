@@ -7,7 +7,7 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
-    std::cout << "A PhoneBook has been destroyed" << std::endl;
+    std::cout << "PhoneBook has been destroyed" << std::endl;
 }
 
 void    PhoneBook::addContact()
@@ -19,11 +19,11 @@ void    PhoneBook::addContact()
     std::cout << std::setw(42) << "Fill contact information" << std::endl;
     std::cout << std::setw(50) << "---------------------------------------\n" <<  std::endl;
 
-    this->contacts[i % 8].setFirstN();
-    this->contacts[i % 8].setLastN();
-    this->contacts[i % 8].setNickN();
-    this->contacts[i % 8].setPhoneNumber();
-    this->contacts[i % 8].setSecret();
+    this->contacts[i % 8].askForFirstN();
+    this->contacts[i % 8].askForLastN();
+    this->contacts[i % 8].askForNickN();
+    this->contacts[i % 8].askForPhoneNumber();
+    this->contacts[i % 8].askForSecret();
     // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     i++;
@@ -45,9 +45,9 @@ void    PhoneBook::searchContact()
     for (int i = 0; i < this->_contactNb; i++)
     {
         std::cout << this->contacts[i].getIndex() << " | "
-        << this->contacts[i].formatFirstN() << " | " <<
-        this->contacts[i].formatLastN() << " | " <<
-        this->contacts[i].formatNickN() << std::endl;
+        << this->contacts[i].formatColumn(this->contacts[i].getFirstN()) << " | " <<
+        this->contacts[i].formatColumn(this->contacts[i].getLastN()) << " | " <<
+        this->contacts[i].formatColumn(this->contacts[i].getNickN()) << std::endl;
         std::cout << std::endl;
     }
     std::cout << "Enter the index of the contact you want to display:\n";
@@ -66,9 +66,9 @@ void    PhoneBook::searchContact()
         return ;
     }
     std::cout << this->contacts[indx-1].getIndex() << " | "
-    << this->contacts[indx-1].formatFirstN() << " | " <<
-    this->contacts[indx-1].formatLastN() << " | " <<
-    this->contacts[indx-1].formatNickN() << std::endl;
+    << this->contacts[indx-1].formatColumn(this->contacts[indx-1].getFirstN()) << " | " <<
+    this->contacts[indx-1].formatColumn(this->contacts[indx-1].getLastN())  << " | " <<
+    this->contacts[indx-1].formatColumn(this->contacts[indx-1].getNickN()) << std::endl;
     std::cout << std::endl;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
