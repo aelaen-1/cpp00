@@ -9,7 +9,7 @@ Contact::~Contact()
 {
 }
 
-bool   Contact::isPhoneNumber(std::string input)
+bool   Contact::_isPhoneNumber(std::string input)
 {
     unsigned long i = 0;
     while (i < input.size())
@@ -22,7 +22,7 @@ bool   Contact::isPhoneNumber(std::string input)
 }
 
 // askFor functions
-std::string    Contact::askInputString()
+std::string    Contact::_askInputString()
 {
     std::string name;
 
@@ -36,64 +36,64 @@ std::string    Contact::askInputString()
     return (name);
 }
 
-void    Contact::askForFirstN()
+void    Contact::_askForFirstN()
 {
     std::cout<< "First name:\n";
-    this->_firstN = askInputString();
+    this->_firstN = _askInputString();
 }
 
-void    Contact::askForLastN()
+void    Contact::_askForLastN()
 {
     std::cout<< "Last name:\n";
-    this->_lastN = askInputString();
+    this->_lastN = _askInputString();
 }
 
-void Contact::askForNickN()
+void Contact::_askForNickN()
 {
     std::cout<< "Nick name:\n";
-    this->_nickN = askInputString();
+    this->_nickN = _askInputString();
 }
 
-void Contact::askForPhoneNumber()
+void Contact::_askForPhoneNumber()
 {
     std::cout<< "Phone number:\n";
-    this->_phoneNumber = askInputString();
-    while (!this->isPhoneNumber(this->_phoneNumber))
+    this->_phoneNumber = _askInputString();
+    while (!this->_isPhoneNumber(this->_phoneNumber))
     {
         std::cout << "Please type a valid phone number: \n";
-        this->_phoneNumber = askInputString();
+        this->_phoneNumber = _askInputString();
     }
 }
 
-void    Contact::askForSecret()
+void    Contact::_askForSecret()
 {
     std::cout<< "Darkest secret...:\n";
-    this->_secret = askInputString();
+    this->_secret = _askInputString();
 }
 
 // setters
-void     Contact::setIndex(int i)
+void     Contact::_setIndex(int i)
 {
     this->_index = i;
 }
 
 //getters 
-int     Contact::getIndex()
+int     Contact::_getIndex()
 {
     return (this->_index);
 }
 
-std::string Contact::getFirstN()
+std::string Contact::_getFirstN()
 {
     return (this->_firstN);
 }
 
-std::string Contact::getLastN()
+std::string Contact::_getLastN()
 {
     return (this->_lastN);
 }
 
-std::string Contact::getNickN()
+std::string Contact::_getNickN()
 {
     return (this->_nickN);
 }

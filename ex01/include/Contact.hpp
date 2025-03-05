@@ -11,19 +11,19 @@ public:
     Contact();
     ~Contact();
 
-    static std::string     askInputString();
-    static bool             isPhoneNumber(std::string input);
-    void    askForFirstN();
-    void    askForLastN();
-    void    askForNickN();
-    void    askForPhoneNumber();
-    void    askForSecret();
-    void    setIndex(int i);
+    static std::string     _askInputString();
+    static bool             _isPhoneNumber(std::string input);
+    void    _askForFirstN();
+    void    _askForLastN();
+    void    _askForNickN();
+    void    _askForPhoneNumber();
+    void    _askForSecret();
+    void    _setIndex(int i);
 
-    std::string getFirstN();
-    std::string getLastN();
-    std::string getNickN();
-    int     getIndex();
+    std::string _getFirstN();
+    std::string _getLastN();
+    std::string _getNickN();
+    int     _getIndex();
 
 private:
     std::string _firstN;

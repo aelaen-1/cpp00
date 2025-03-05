@@ -18,9 +18,9 @@ int main()
         selectCommandPrompt();
         std::getline(std::cin, input);
         if (input.compare("ADD") == 0)
-            phonebook.addContact();
+            phonebook._addContact();
         else if (input.compare("SEARCH") == 0)
-            phonebook.searchContact();
+            phonebook._searchContact();
         else if (input.compare("EXIT") == 0)
             break ;
     }

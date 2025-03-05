@@ -13,11 +13,11 @@ public:
     PhoneBook();
     ~PhoneBook();
 
-    Contact     contacts[8];
+    Contact     _contacts[8];
 
-    void        addContact();
-    void        searchContact();
-    std::string formatColumn(std::string toFormat);
+    void        _addContact();
+    void        _searchContact();
+    std::string _formatColumn(std::string toFormat);
 
 private:
     int _contactNb;
