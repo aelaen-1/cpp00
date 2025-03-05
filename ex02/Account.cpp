@@ -1,41 +1,27 @@
 #include "Account.hpp"
+#include <iostream>
 
-// int				_accountIndex = 0;
-// int				_amount = 0;
-// int				_nbDeposits = 0;
-// int				_nbWithdrawals = 0;
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
-Account::Account( int initial_deposit )
+
+Account::Account(void)
+: _accountIndex(0), _amount(0), _nbDeposits(0), _nbWithdrawals(0)
 {
 
+}
+
+Account::Account(int initial_deposit)
+: Account()
+{
+    this->_amount = initial_deposit;
+    _displayTimestamp();
+    std::cout << "index:" << this->_accountIndex << ";amount:" << _amount << ";created" << std::endl;
 }
 
 Account::~Account(void)
 {
     
-}
-
-int Account::getNbAccounts(void)
-{
-
-}
-
-static int	getTotalAmount(void)
-{
-
-}
-
-static int	getNbDeposits(void)
-{
-
-}
-
-static int	getNbWithdrawals(void)
-{
-
-}
-
-static void	displayAccountsInfos(void)
-{
-
 }
